@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- Navbar Fragment -->
+<nav th:fragment="navbar" class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+
+            <!-- Logo / Name -->
+            <div class="flex-shrink-0">
+                <a href="/" class="flex items-center">
+                    <span class="text-2xl font-bold text-gray-900">CV</span>
+                    <span class="ml-2 text-lg font-medium text-gray-600 hidden sm:inline">Cesar Villarreal</span>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex md:items-center md:space-x-8">
+                <a href="/"
+                   class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                    Home
+                </a>
+                <a href="/about"
+                   class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                    About
+                </a>
+                <a href="/projects"
+                   class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                    Projects
+                </a>
+                <a href="/how-i-built-this"
+                   class="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                    How I Built This
+                </a>
+                <a href="/contact"
+                   class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-colors duration-200">
+                    Contact
+                </a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button type="button"
+                        class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+                        aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <!-- Hamburger icon -->
+                    <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                    <!-- Close icon (hidden by default) -->
+                    <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu (hidden by default) -->
+    <div class="mobile-menu hidden md:hidden border-t border-gray-200">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="/"
+               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50">
+                Home
+            </a>
+            <a href="/about"
+               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50">
+                About
+            </a>
+            <a href="/projects"
+               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50">
+                Projects
+            </a>
+            <a href="/how-i-built-this"
+               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50">
+                How I Built This
+            </a>
+            <a href="/contact"
+               class="block px-3 py-2 mx-3 mt-2 rounded-md text-base font-medium text-center text-white bg-primary-600 hover:bg-primary-700">
+                Contact
+            </a>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

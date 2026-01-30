@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cesar Villarreal - Portfolio</title>
+    <div th:replace="~{fragments/favicon :: favicon}"></div>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                    Hi, I'm <span class="text-primary-400">Cesar Villarreal</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-4">
+                    Cloud Engineer | Technical Consultant | Software Engineer
+                </p>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
+                    Building enterprise-grade applications and cloud infrastructure with Spring Boot, AWS, and modern technologies.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="/projects"
+                       class="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-colors duration-200">
+                        View My Work
+                        <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                    </a>
+                    <a href="/contact"
+                       class="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-gray-900 bg-white hover:bg-gray-100 rounded-lg transition-colors duration-200">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Featured Projects
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    A selection of my best work demonstrating full-stack development, cloud architecture, and system design.
+                </p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div th:if="${!featuredProjects.isEmpty()}"
+                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div th:each="project : ${featuredProjects}">
+                    <div th:replace="~{fragments/project-card :: project-card(${project})}"></div>
+                </div>
+            </div>
+
+            <!-- No Projects Message -->
+            <div th:if="${featuredProjects.isEmpty()}"
+                 class="text-center py-12">
+                <p class="text-gray-600">No featured projects yet. Check back soon!</p>
+            </div>
+
+            <!-- View All Projects Link -->
+            <div class="text-center mt-12">
+                <a href="/projects"
+                   class="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200">
+                    View All Projects
+                    <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Cesar Villarreal</title>
+    <div th:replace="~{fragments/favicon :: favicon}"></div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8', 500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e' }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }</style>
+</head>
+<body class="bg-gray-50">
+
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <!-- Page Header -->
+    <section class="bg-white border-b border-gray-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">About Me</h1>
+            <p class="text-xl text-gray-600">Cloud Engineer | Computer Science Instructor | M.S. in Software Engineering</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+                <!-- Main Content -->
+                <div class="lg:col-span-2 space-y-8">
+                    <!-- Bio -->
+                    <div class="bg-white rounded-lg shadow-md p-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Professional Summary</h2>
+                        <div class="prose prose-lg max-w-none text-gray-700 space-y-5 leading-relaxed">
+                            <p>
+                                I'm Cesar Villarreal, a software engineer and cloud professional with a Master's degree in Software Engineering from Kennesaw State University, maintaining a 3.8 GPA. My career combines hands-on technical expertise with a passion for education and knowledge sharing.
+                            </p>
+                            <p>
+                                As a Computer Science Instructor at Prosper ISD, I develop and deliver comprehensive curriculum for aspiring software engineers. I designed and built a production-grade learning management platform using React, Django, PostgreSQL, and Docker, currently serving over 200 students. This platform streamlines course delivery, assignment management, and student progress tracking while providing real-world experience with modern development practices.
+                            </p>
+                            <p>
+                                Prior to education, I served as a Cloud Engineer at Cognizant Technical Solutions, where I supported enterprise infrastructure engagements and earned my AWS Solutions Architect Associate certification. This experience provided deep expertise in cloud architecture, infrastructure automation, and scalable system design.
+                            </p>
+                            <p>
+                                My technical focus spans enterprise application development with Spring Boot and .NET Core, cloud infrastructure on AWS, and full-stack web development. I excel at translating complex technical requirements into elegant, maintainable solutions and explaining sophisticated concepts in accessible terms.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="bg-white rounded-lg shadow-md p-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Education</h2>
+                        <div class="space-y-6">
+                            <div class="border-l-4 border-primary-500 pl-4">
+                                <h3 class="text-lg font-semibold text-gray-900">Master of Science in Software Engineering</h3>
+                                <p class="text-primary-600 font-medium">Kennesaw State University</p>
+                                <p class="text-gray-600 text-sm">December 2024 | GPA: 3.8/4.0</p>
+                                <p class="text-gray-600 text-sm mt-2">Cloud Computing, Software Testing, Project Management, Requirements Engineering</p>
+                            </div>
+                            <div class="border-l-4 border-primary-500 pl-4">
+                                <h3 class="text-lg font-semibold text-gray-900">Bachelor of Arts in Applied Mathematics</h3>
+                                <p class="text-primary-600 font-medium">The University of Georgia</p>
+                                <p class="text-gray-600 text-sm">December 2020 | GPA: 3.2/4.0</p>
+                                <p class="text-gray-600 text-sm mt-2">Numerical Analysis, Differential Equations, Discrete Mathematics, Linear Algebra</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="bg-white rounded-lg shadow-md p-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Technical Skills</h2>
+                        <div class="space-y-6">
+                            <!-- Languages -->
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-3">Programming Languages</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">Java</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">Python</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">JavaScript</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">C#</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">SQL</span>
+                                </div>
+                            </div>
+
+                            <!-- Frameworks -->
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-3">Frameworks</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">Spring Boot</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">.NET Core</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">React</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">Django</span>
+                                </div>
+                            </div>
+
+                            <!-- Cloud & DevOps -->
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-3">Cloud, DevOps & Databases</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">AWS</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">Azure</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">Terraform</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">Kubernetes</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">Docker</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">Jenkins</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">CI/CD</span>
+                                </div>
+                            </div>
+
+                            <!-- Methods & Tools -->
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-3">Methods & Tools</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">Agile/Scrum</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">RESTful API Design</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">Git</span>
+                                    <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm border border-gray-200 hover:bg-gray-200 transition-colors">Postman</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div class="bg-white rounded-lg shadow-md p-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Certifications</h2>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <svg class="h-5 w-5 text-primary-600 mr-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                                </svg>
+                                <span class="text-gray-700">AWS Solutions Architect Associate</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="h-5 w-5 text-primary-600 mr-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                                </svg>
+                                <span class="text-gray-700">Microsoft Azure Fundamentals</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="h-5 w-5 text-primary-600 mr-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                                </svg>
+                                <span class="text-gray-700">CompTIA Security+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="space-y-6">
+                    <!-- Headshot -->
+                    <div class="bg-white rounded-lg shadow-md p-8">
+                        <div class="flex justify-center mb-6">
+                            <img src="/images/headshot.png" alt="Cesar Villarreal"
+                                 class="w-32 h-32 rounded-full shadow-lg object-cover object-top border-4 border-gray-100">
+                        </div>
+                        <p class="text-center text-gray-600 text-sm leading-relaxed">Computer Science Instructor | Cloud Engineer</p>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Get In Touch</h3>
+                        <div class="space-y-3">
+                            <a href="mailto:Cesarvillarreal11@gmail.com" class="flex items-center text-gray-600 hover:text-primary-600 transition-colors duration-200">
+                                <svg class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                                </svg>
+                                <span class="text-sm">Cesarvillarreal11@gmail.com</span>
+                            </a>
+                            <a href="https://github.com/Cesar6060" target="_blank" rel="noopener noreferrer" class="flex items-center text-gray-600 hover:text-primary-600 transition-colors duration-200">
+                                <svg class="h-5 w-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+                                </svg>
+                                <span class="text-sm">GitHub</span>
+                            </a>
+                            <a href="https://linkedin.com/in/cesar-b-villarreal" target="_blank" rel="noopener noreferrer" class="flex items-center text-gray-600 hover:text-primary-600 transition-colors duration-200">
+                                <svg class="h-5 w-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                                <span class="text-sm">LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Languages -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Languages</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">English</span>
+                                <span class="text-sm text-gray-500">Native</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-700">Spanish</span>
+                                <span class="text-sm text-gray-500">Native/Bilingual</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="bg-gradient-to-br from-primary-600 to-primary-700 rounded-lg shadow-md p-6 text-white">
+                        <h3 class="text-xl font-bold mb-3">Let's Work Together</h3>
+                        <p class="text-primary-100 mb-4">
+                            Interested in cloud engineering or software development opportunities.
+                        </p>
+                        <a href="/contact" class="block w-full text-center px-4 py-2 bg-white text-primary-600 font-medium rounded-lg hover:bg-gray-100 transition-colors duration-200">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

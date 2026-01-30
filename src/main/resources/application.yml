@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: cesar-portfolio
+  jpa:
+    open-in-view: false
+  thymeleaf:
+    cache: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+server:
+  port: 8080

@@ -1,0 +1,42 @@
+# === Build outputs ===
+target/
+build/
+*.jar
+*.war
+*.class
+
+# === IDE ===
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.swp
+*.swo
+.project
+.classpath
+.settings/
+
+# === Maven ===
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# === Logs ===
+*.log
+logs/
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Environment ===
+.env
+.env.local
+*.env
+
+# === Test outputs ===
+test-output/
+surefire-reports/
+
+# === Coverage ===
+jacoco.exec

@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/portfolio
+    username: dev
+    password: devpassword
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  thymeleaf:
+    cache: false
+
+logging:
+  level:
+    com.cesarvillarreal.portfolio: DEBUG
