@@ -5,11 +5,16 @@ spring:
     password: devpassword
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     show-sql: true
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    clean-disabled: false
   thymeleaf:
     cache: false
 
 logging:
   level:
     com.cesarvillarreal.portfolio: DEBUG
+    org.flywaydb: DEBUG

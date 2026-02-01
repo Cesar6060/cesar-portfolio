@@ -73,4 +73,4 @@ jobs:
 # AWS_ACCESS_KEY_ID        - IAM user access key
 # AWS_SECRET_ACCESS_KEY    - IAM user secret key
 # APP_RUNNER_SERVICE_ARN   - ARN of your App Runner service
-# APP_DOMAIN               - Your domain (e.g., cesarguerra.dev)
+# APP_DOMAIN               - Your domain (e.g., cesarvillarreal.dev)

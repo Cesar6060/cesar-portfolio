@@ -40,7 +40,7 @@
         </dependency>
         
         <!-- ═══════════════════════════════════════════════════════════════ -->
-        <!-- DATABASE (PostgreSQL + JPA)                                      -->
+        <!-- DATABASE (PostgreSQL + JPA + Flyway)                             -->
         <!-- ═══════════════════════════════════════════════════════════════ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -50,6 +50,16 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>10.4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-database-postgresql</artifactId>
+            <version>10.4.1</version>
         </dependency>
         
         <!-- ═══════════════════════════════════════════════════════════════ -->

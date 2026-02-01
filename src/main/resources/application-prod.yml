@@ -6,6 +6,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    clean-disabled: true
 
 logging:
   level:
