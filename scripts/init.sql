@@ -48,7 +48,7 @@ INSERT INTO projects (title, slug, short_description, full_description, github_u
     'A comprehensive learning management system built for video game development courses at Prosper ISD. Features include video content with progress tracking, markdown-based lessons, assignment submission and grading workflows, real-time notifications via WebSockets, a code playground with Monaco Editor for hands-on coding, and discussion forums. Implements role-based access for students and instructors with secure enrollment codes. Backend achieves 81% test coverage.',
     'https://github.com/Cesar6060/gamedev-learning-platform',
     NULL,
-    '/images/gamedev-platform.png',
+    '/images/gamedev-platform2.png',
     true,
     1
 );
