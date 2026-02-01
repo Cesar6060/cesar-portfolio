@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Cesar Villarreal - Portfolio</title>
+    <title layout:title-pattern="$CONTENT_TITLE - Cesar Villarreal">Cesar Villarreal - Portfolio</title>
+    <div th:replace="~{fragments/favicon :: favicon}"></div>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -32,9 +33,6 @@
         }
     </script>
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" th:href="@{/css/custom.css}">
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,6 +45,25 @@
         .font-display {
             font-family: 'Playfair Display', Georgia, serif;
         }
+        /* Animations */
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased">
@@ -62,7 +79,17 @@
     <!-- Footer -->
     <div th:replace="~{fragments/footer :: footer}"></div>
 
-    <!-- Custom JS -->
-    <script th:src="@{/js/main.js}"></script>
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
