@@ -170,7 +170,7 @@ Add these secrets:
 #### Buy Domain
 - **Option A:** AWS Route 53 (easy DNS integration)
 - **Option B:** Namecheap, Google Domains, etc.
-- **Suggested:** cesarguerra.dev (~$12/year)
+- **Suggested:** cesarvillarreal.dev (~$12/year)
 
 #### Configure DNS
 ```

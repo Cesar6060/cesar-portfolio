@@ -29,7 +29,7 @@
 ### 1.3 Project Structure
 ```
 cesar-portfolio/
-├── src/main/java/com/cesarguerra/portfolio/
+├── src/main/java/com/cesarvillarreal/portfolio/
 │   ├── PortfolioApplication.java
 │   ├── config/
 │   │   ├── SecurityConfig.java

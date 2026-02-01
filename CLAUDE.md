@@ -8,7 +8,7 @@
 
 **Goal:** Build a full-stack portfolio website demonstrating enterprise Java/Spring skills for cloud engineering and consulting roles.
 
-**Owner:** Cesar Guerra  
+**Owner:** Cesar Villarreal  
 **Target Roles:** Cloud Engineer, Technical Consultant, Software Engineer  
 **Timeline:** MVP in 1-2 weeks
 
@@ -62,7 +62,7 @@ cesar-portfolio/
 │
 └── src/
     ├── main/
-    │   ├── java/com/cesarguerra/portfolio/
+    │   ├── java/com/cesarvillarreal/portfolio/
     │   │   ├── PortfolioApplication.java       # Main class
     │   │   ├── config/
     │   │   │   └── WebConfig.java              # Web configuration
@@ -106,7 +106,7 @@ cesar-portfolio/
     │               └── .gitkeep
     │
     └── test/
-        ├── java/com/cesarguerra/portfolio/
+        ├── java/com/cesarvillarreal/portfolio/
         │   ├── PortfolioApplicationTests.java
         │   ├── controller/
         │   │   ├── HomeControllerTest.java
@@ -273,7 +273,7 @@ spring:
 
 logging:
   level:
-    com.cesarguerra.portfolio: DEBUG
+    com.cesarvillarreal.portfolio: DEBUG
 ```
 
 ### application-prod.yml
@@ -290,7 +290,7 @@ spring:
 
 logging:
   level:
-    com.cesarguerra.portfolio: INFO
+    com.cesarvillarreal.portfolio: INFO
 ```
 
 ### application-test.yml
@@ -419,7 +419,7 @@ title: "Learning Management Platform"
 slug: "learning-management-platform"
 shortDescription: "Full-stack LMS serving 200+ students with course management, assignments, and grading"
 techStack: ["Django", "React", "PostgreSQL", "Docker", "AWS"]
-githubUrl: "https://github.com/cesarguerra/lms"
+githubUrl: "https://github.com/cesarvillarreal/lms"
 featured: true
 displayOrder: 1
 ```
@@ -431,8 +431,8 @@ title: "Portfolio Website"
 slug: "portfolio-website"
 shortDescription: "The site you're looking at - Spring Boot + Thymeleaf + AWS App Runner"
 techStack: ["Spring Boot", "Thymeleaf", "PostgreSQL", "AWS App Runner", "GitHub Actions"]
-githubUrl: "https://github.com/cesarguerra/portfolio"
-liveUrl: "https://cesarguerra.dev"
+githubUrl: "https://github.com/cesarvillarreal/portfolio"
+liveUrl: "https://cesarvillarreal.dev"
 featured: true
 displayOrder: 2
 ```
@@ -444,7 +444,7 @@ title: "Cloud Infrastructure Automation"
 slug: "cloud-automation"
 shortDescription: "Reusable Terraform modules for AWS infrastructure provisioning"
 techStack: ["Terraform", "AWS", "Python", "GitHub Actions"]
-githubUrl: "https://github.com/cesarguerra/cloud-automation"
+githubUrl: "https://github.com/cesarvillarreal/cloud-automation"
 featured: false
 displayOrder: 3
 ```
@@ -456,7 +456,7 @@ title: "VEX Robotics Controller"
 slug: "vex-robotics"
 shortDescription: "Competition robot control system with PID tuning and autonomous routines"
 techStack: ["C++", "VEXcode", "PID Control"]
-githubUrl: "https://github.com/cesarguerra/vex-robotics"
+githubUrl: "https://github.com/cesarvillarreal/vex-robotics"
 featured: false
 displayOrder: 4
 ```
@@ -530,6 +530,6 @@ When asked about this project:
 - [ ] Screenshots of each project
 - [ ] Actual GitHub repos linked
 - [ ] Contact form sends to real email (or stores in DB)
-- [ ] Custom domain (cesarguerra.dev or similar)
+- [ ] Custom domain (cesarvillarreal.dev or similar)
 - [ ] Enable CodeRabbit when repo is created
 - [ ] Mobile test on real phone before launch

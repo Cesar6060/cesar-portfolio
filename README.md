@@ -35,7 +35,7 @@ open http://localhost:8080
 ```
 src/
 ├── main/
-│   ├── java/com/cesarguerra/portfolio/
+│   ├── java/com/cesarvillarreal/portfolio/
 │   │   ├── controller/    # Web and API controllers
 │   │   ├── model/         # JPA entities
 │   │   ├── repository/    # Data access

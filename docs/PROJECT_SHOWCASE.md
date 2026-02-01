@@ -162,8 +162,8 @@ Could have used a static site generator, but chose Spring Boot to:
 
 ## Links
 
-- **Live Site:** https://cesarguerra.dev *(update)*
-- **GitHub Repo:** https://github.com/cesarguerra/portfolio *(update)*
+- **Live Site:** https://cesarvillarreal.dev *(update)*
+- **GitHub Repo:** https://github.com/cesarvillarreal/portfolio *(update)*
 - **Terraform Modules:** /terraform in repo
 
 ---
