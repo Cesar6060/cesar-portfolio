@@ -6,7 +6,8 @@
 **Region:** us-east-1
 **Domain:** cesarvillarreal.dev
 **Date:** 2026-02-01
-**Live URL:** https://pnzm3urbwb.us-east-1.awsapprunner.com
+**Live URL:** https://cesarvillarreal.dev
+**App Runner URL:** https://pnzm3urbwb.us-east-1.awsapprunner.com
 
 ---
 
@@ -44,7 +45,7 @@
 │  │   │  └─────────────┘  └─────────────┘  └─────────────────────┘  │   │  │
 │  │   │                                                               │   │  │
 │  │   │  Environment: SPRING_PROFILES_ACTIVE=prod                    │   │  │
-│  │   │  Port: 8080 | CPU: 1 vCPU | Memory: 2 GB                    │   │  │
+│  │   │  Port: 8080 | CPU: 0.25 vCPU | Memory: 512 MB                    │   │  │
 │  │   └──────────────────────────────────────────────────────────────┘   │  │
 │  │                                                                        │  │
 │  │   Auto-scaling: 1-25 instances | Auto-deploy on ECR push             │  │
@@ -135,7 +136,7 @@ flowchart TB
 
     subgraph AWS["AWS Cloud (us-east-1)"]
         subgraph AppRunner["App Runner"]
-            Container[Spring Boot Container<br/>Java 21 + Thymeleaf<br/>1 vCPU, 2GB RAM]
+            Container[Spring Boot Container<br/>Java 21 + Thymeleaf<br/>0.25 vCPU, 512MB RAM]
         end
 
         subgraph RDS["RDS"]
@@ -196,7 +197,7 @@ flowchart TB
 | Component | Service | Specification | Purpose |
 |-----------|---------|---------------|---------|
 | Container Registry | AWS ECR | Private registry | Store Docker images |
-| Compute | AWS App Runner | 1 vCPU, 2GB RAM | Run containers |
+| Compute | AWS App Runner | 0.25 vCPU, 512MB RAM | Run containers |
 | Database | AWS RDS | PostgreSQL 16.11, db.t3.micro | Managed database |
 | DNS | Cloudflare | Free tier | DNS + SSL + CDN |
 | CI/CD | GitHub Actions | Ubuntu runner | Automated deployments |
@@ -230,6 +231,12 @@ flowchart TB
 | 17:29 | Rebuilt image for linux/amd64 | Correct architecture |
 | 17:30 | Created App Runner (attempt 3) | Started successfully |
 | 17:34 | App Runner running | **LIVE at https://pnzm3urbwb.us-east-1.awsapprunner.com** |
+| 17:45 | Cost optimization | Reduced to 0.25 vCPU, 512MB (~$30/mo savings) |
+| 18:05 | Cloudflare DNS | Added CNAME records for domain |
+| 18:10 | Custom domain | Associated cesarvillarreal.dev with App Runner |
+| 18:12 | Domain validated | SSL certificate issued, domain active |
+| 18:15 | Budget alerts | Created 80% and 95% spending alerts |
+| 18:20 | GitHub Secrets | Configured AWS credentials for CI/CD |
 
 ---
 
@@ -373,8 +380,8 @@ Managed container hosting with auto-scaling.
 
 | Setting | Value |
 |---------|-------|
-| CPU | 1 vCPU |
-| Memory | 2 GB |
+| CPU | 0.25 vCPU (256 units) |
+| Memory | 512 MB |
 | Port | 8080 |
 | Min Instances | 1 |
 | Max Instances | 25 |
@@ -451,8 +458,8 @@ cat > apprunner-config.json << 'EOF'
     }
   },
   "InstanceConfiguration": {
-    "Cpu": "1024",
-    "Memory": "2048"
+    "Cpu": "256",
+    "Memory": "512"
   },
   "HealthCheckConfiguration": {
     "Protocol": "TCP",
@@ -521,10 +528,8 @@ jobs:
 
 | Secret | Value | Status |
 |--------|-------|--------|
-| AWS_ACCESS_KEY_ID | IAM access key | ⬜ To configure |
-| AWS_SECRET_ACCESS_KEY | IAM secret key | ⬜ To configure |
-| APP_RUNNER_SERVICE_ARN | `arn:aws:apprunner:us-east-1:771784399457:service/cesar-portfolio/15061563b85c41139499ed9184f2c67f` | ⬜ To configure |
-| APP_DOMAIN | cesarvillarreal.dev | ⬜ To configure |
+| AWS_ACCESS_KEY_ID | IAM access key | ✅ Configured |
+| AWS_SECRET_ACCESS_KEY | IAM secret key | ✅ Configured |
 
 ---
 
@@ -542,6 +547,70 @@ jobs:
 - **DDoS Protection:** Built-in attack mitigation
 - **CDN Caching:** Faster static asset delivery
 - **Analytics:** Traffic insights
+
+### Custom Domain Setup with App Runner
+
+App Runner requires domain validation. After adding CNAME records, associate the domain:
+
+```bash
+aws apprunner associate-custom-domain \
+  --service-arn "arn:aws:apprunner:us-east-1:771784399457:service/cesar-portfolio/15061563b85c41139499ed9184f2c67f" \
+  --domain-name cesarvillarreal.dev \
+  --enable-www-subdomain
+```
+
+Then add the certificate validation CNAME records (provided by AWS) to Cloudflare with **DNS only** (gray cloud).
+
+---
+
+## 6. AWS Budget Alerts
+
+Cost monitoring with email notifications.
+
+```bash
+aws budgets create-budget \
+  --account-id 771784399457 \
+  --budget '{
+    "BudgetName": "AWS-Credits-Monitor",
+    "BudgetLimit": {"Amount": "95", "Unit": "USD"},
+    "BudgetType": "COST",
+    "TimeUnit": "MONTHLY"
+  }' \
+  --notifications-with-subscribers '[
+    {
+      "Notification": {
+        "NotificationType": "ACTUAL",
+        "ComparisonOperator": "GREATER_THAN",
+        "Threshold": 80,
+        "ThresholdType": "PERCENTAGE"
+      },
+      "Subscribers": [{"SubscriptionType": "EMAIL", "Address": "cesarvillarreal11@gmail.com"}]
+    },
+    {
+      "Notification": {
+        "NotificationType": "ACTUAL",
+        "ComparisonOperator": "GREATER_THAN",
+        "Threshold": 95,
+        "ThresholdType": "PERCENTAGE"
+      },
+      "Subscribers": [{"SubscriptionType": "EMAIL", "Address": "cesarvillarreal11@gmail.com"}]
+    }
+  ]'
+```
+
+### Emergency Shutdown Commands
+
+When you receive the 95% alert:
+
+```bash
+# Pause App Runner (stops compute charges, keeps configuration)
+aws apprunner pause-service \
+  --service-arn "arn:aws:apprunner:us-east-1:771784399457:service/cesar-portfolio/15061563b85c41139499ed9184f2c67f"
+
+# Stop RDS (stops instance charges, keeps data)
+aws rds stop-db-instance \
+  --db-instance-identifier cesar-portfolio-db
+```
 
 ---
 
@@ -597,13 +666,25 @@ aws apprunner describe-service \
 
 | Service | Specification | Estimated Cost |
 |---------|---------------|----------------|
-| RDS db.t3.micro | 1 vCPU, 1GB RAM, 20GB | $15-20 (or free tier) |
-| App Runner | 1 vCPU, 2GB RAM | $25-40 |
+| RDS db.t3.micro | 1 vCPU, 1GB RAM, 20GB | $15-18 (or free tier) |
+| App Runner | 0.25 vCPU, 512MB RAM | $10-15 |
 | ECR Storage | ~200MB image | < $1 |
-| Data Transfer | Varies | $5-10 |
+| Data Transfer | Varies | $3-5 |
 | Cloudflare | Free tier | $0 |
 
-**Estimated Total:** $45-70/month (less with AWS free tier)
+**Estimated Total:** $25-40/month (optimized configuration)
+
+### Cost Optimization Applied
+
+We reduced App Runner from 1 vCPU/2GB to 0.25 vCPU/512MB:
+
+```bash
+aws apprunner update-service \
+  --service-arn "arn:aws:apprunner:us-east-1:771784399457:service/cesar-portfolio/15061563b85c41139499ed9184f2c67f" \
+  --instance-configuration Cpu=256,Memory=512
+```
+
+This saves ~$15-25/month while maintaining sufficient resources for a portfolio site.
 
 ---
 
@@ -665,7 +746,7 @@ Architecture highlights:
 Lesson learned: Apple Silicon builds ARM64 images by default.
 AWS App Runner needs x86_64. Use: docker buildx build --platform linux/amd64
 
-Total cost: ~$50/month
+Total cost: ~$30/month (cost-optimized)
 
 Check it out: cesarvillarreal.dev
 Source: github.com/Cesar6060/cesar-portfolio

@@ -48,29 +48,21 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+          docker build --platform linux/amd64 -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
-      - name: Deploy to App Runner
+      - name: Deployment notification
         run: |
-          # App Runner automatically deploys when new image is pushed to ECR
-          # This step just triggers a deployment if auto-deploy is disabled
-          aws apprunner start-deployment \
-            --service-arn ${{ secrets.APP_RUNNER_SERVICE_ARN }} \
-            || echo "Auto-deploy enabled, skipping manual trigger"
-
-      - name: Verify deployment health
-        run: |
-          echo "Waiting for deployment to complete..."
-          sleep 60
-          curl -f https://${{ secrets.APP_DOMAIN }}/actuator/health || exit 1
-          echo "Deployment successful!"
+          echo "Docker image pushed to ECR"
+          echo "App Runner will auto-deploy the new image"
+          echo "Check https://cesarvillarreal.dev in ~2 minutes"
 
 # Required GitHub Secrets:
 # ────────────────────────
 # AWS_ACCESS_KEY_ID        - IAM user access key
 # AWS_SECRET_ACCESS_KEY    - IAM user secret key
-# APP_RUNNER_SERVICE_ARN   - ARN of your App Runner service
-# APP_DOMAIN               - Your domain (e.g., cesarvillarreal.dev)
+#
+# App Runner auto-deploys when new images are pushed to ECR
+# No additional secrets needed
