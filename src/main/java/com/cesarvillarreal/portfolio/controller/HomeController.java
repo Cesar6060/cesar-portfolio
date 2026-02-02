@@ -96,10 +96,11 @@ public class HomeController {
             RedirectAttributes redirectAttributes,
             Model model) {
 
-        log.debug("Processing contact form submission from: {}", contactMessage.getEmail());
+        log.info("Contact form submission received - Name: {}, Email: {}",
+                contactMessage.getName(), contactMessage.getEmail());
 
         if (bindingResult.hasErrors()) {
-            log.warn("Contact form has validation errors");
+            log.warn("Contact form validation failed. Errors: {}", bindingResult.getAllErrors());
             return "contact";
         }
 
