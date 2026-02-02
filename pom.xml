@@ -115,7 +115,16 @@
             <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
-        
+
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <!-- AWS SES FOR EMAIL NOTIFICATIONS                                  -->
+        <!-- ═══════════════════════════════════════════════════════════════ -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>ses</artifactId>
+            <version>2.25.11</version>
+        </dependency>
+
         <!-- ═══════════════════════════════════════════════════════════════ -->
         <!-- PHASE 2: SECURITY (uncomment when adding admin panel)            -->
         <!-- ═══════════════════════════════════════════════════════════════ -->

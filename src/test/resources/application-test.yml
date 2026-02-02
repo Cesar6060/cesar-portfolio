@@ -7,3 +7,8 @@ spring:
       ddl-auto: create-drop
   flyway:
     enabled: false
+
+# Disable email in tests
+app:
+  email:
+    enabled: false

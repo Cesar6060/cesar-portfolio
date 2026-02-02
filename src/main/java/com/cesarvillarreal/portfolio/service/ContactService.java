@@ -16,18 +16,29 @@ public class ContactService {
 
     private static final Logger log = LoggerFactory.getLogger(ContactService.class);
     private final ContactMessageRepository contactMessageRepository;
+    private final EmailService emailService;
 
-    public ContactService(ContactMessageRepository contactMessageRepository) {
+    public ContactService(ContactMessageRepository contactMessageRepository, EmailService emailService) {
         this.contactMessageRepository = contactMessageRepository;
+        this.emailService = emailService;
     }
 
     /**
-     * Save a new contact message
+     * Save a new contact message and send email notification
      */
     @Transactional
     public ContactMessage saveMessage(ContactMessage message) {
         log.info("Saving contact message from: {} ({})", message.getName(), message.getEmail());
-        return contactMessageRepository.save(message);
+        ContactMessage saved = contactMessageRepository.save(message);
+
+        // Send email notification asynchronously
+        try {
+            emailService.sendContactNotification(saved);
+        } catch (Exception e) {
+            log.error("Failed to send email notification, but message was saved", e);
+        }
+
+        return saved;
     }
 
     /**

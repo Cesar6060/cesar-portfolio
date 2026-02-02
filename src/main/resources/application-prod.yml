@@ -11,6 +11,12 @@ spring:
     baseline-on-migrate: true
     clean-disabled: true
 
+# Email notifications via AWS SES
+app:
+  email:
+    enabled: true
+    notification-recipient: ${NOTIFICATION_EMAIL:cesarvillarreal11@gmail.com}
+
 logging:
   level:
     com.cesarvillarreal.portfolio: INFO

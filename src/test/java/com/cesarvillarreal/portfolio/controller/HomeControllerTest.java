@@ -3,6 +3,7 @@ package com.cesarvillarreal.portfolio.controller;
 import com.cesarvillarreal.portfolio.model.ContactMessage;
 import com.cesarvillarreal.portfolio.model.Project;
 import com.cesarvillarreal.portfolio.service.ContactService;
+import com.cesarvillarreal.portfolio.service.EmailService;
 import com.cesarvillarreal.portfolio.service.ProjectService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,6 +36,9 @@ class HomeControllerTest {
 
     @MockBean
     private ContactService contactService;
+
+    @MockBean
+    private EmailService emailService;
 
     private Project testProject;
     private List<Project> testProjects;
