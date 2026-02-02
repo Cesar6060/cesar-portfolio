@@ -181,7 +181,6 @@ cesar-portfolio/
 │   │       ├── db/migration/   # Flyway SQL migrations
 │   │       └── application*.yml # Configuration
 │   └── test/                   # Unit & integration tests
-├── docs/                       # Documentation
 ├── .github/workflows/          # CI/CD pipelines
 ├── docker-compose.yml          # Local development
 ├── Dockerfile                  # Production build
@@ -324,16 +323,6 @@ touch src/main/resources/db/migration/V9__description.sql
 | **Total** | | **~$20-25** |
 
 *Free tier eligible for 12 months
-
----
-
-## Documentation
-
-| Document | Description |
-|----------|-------------|
-| [Architecture Decisions](docs/ARCHITECTURE_DECISIONS.md) | Technical decision records |
-| [AWS Setup](docs/AWS_SETUP.md) | Infrastructure configuration |
-| [Interview Talking Points](docs/INTERVIEW_TALKING_POINTS.md) | Project discussion guide |
 
 ---
 

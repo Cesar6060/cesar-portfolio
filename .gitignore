@@ -44,3 +44,4 @@ jacoco.exec
 # === Internal docs ===
 CLAUDE.md
 BUILD_PROGRESS.md
+docs/
