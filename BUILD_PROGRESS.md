@@ -493,18 +493,18 @@ While JaCoCo cannot generate a numerical report, manual analysis shows:
 **New 3 Projects:**
 1. **GameDev Learning Platform** (featured, displayOrder: 1)
    - Django, React, TypeScript, PostgreSQL, Redis, Docker, WebSockets
-   - GitHub: https://github.com/Cesar6060/gamedev-learning-platform
+   - GitHub: https://github.com/Cesar6060/dev-learning-platform
    - Image: /images/gamedev-screenshot.png
 
 2. **Portfolio Website** (featured, displayOrder: 2)
    - Spring Boot, Thymeleaf, PostgreSQL, AWS App Runner, GitHub Actions
-   - GitHub: https://github.com/Cesar6060/portfolio
+   - GitHub: https://github.com/Cesar6060/cesar-portfolio
    - Live: https://cesarvillarreal.dev
    - Image: /images/portfolio-screenshot.png
 
 3. **AI Pet Management Platform** (featured, displayOrder: 3)
    - Blazor, ASP.NET Core, Entity Framework Core, SQLite, OpenAI API, Bootstrap
-   - GitHub: https://github.com/Cesar6060/AA-CHATBOT
+   - GitHub: https://github.com/Cesar6060/PawsitiveHaven
    - Image: /images/chatbot-screenshot.png
 
 ### Task 4: Image Support Added
