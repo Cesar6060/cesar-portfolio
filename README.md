@@ -11,57 +11,7 @@ A full-stack portfolio website built with enterprise Java technologies, demonstr
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                            INTERNET                                  │
-└─────────────────────────────────────────────────────────────────────┘
-                                  │
-                                  ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                     CLOUDFLARE (DNS + SSL + CDN)                     │
-│                                                                      │
-│   • Free SSL/TLS encryption                                         │
-│   • DDoS protection                                                  │
-│   • Global CDN for static assets                                    │
-└─────────────────────────────────────────────────────────────────────┘
-                                  │
-                                  ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                           AWS CLOUD                                  │
-│                                                                      │
-│  ┌────────────────────────────────────────────────────────────┐    │
-│  │                    AWS App Runner                           │    │
-│  │                                                             │    │
-│  │   ┌─────────────────────────────────────────────────────┐  │    │
-│  │   │            Spring Boot Application                   │  │    │
-│  │   │                                                      │  │    │
-│  │   │  • Java 21 + Spring Boot 3.2                        │  │    │
-│  │   │  • Thymeleaf server-side rendering                  │  │    │
-│  │   │  • REST API endpoints                                │  │    │
-│  │   │  • Flyway database migrations                       │  │    │
-│  │   └─────────────────────────────────────────────────────┘  │    │
-│  │                                                             │    │
-│  │   Auto-scaling: 1-25 instances                             │    │
-│  │   CPU: 0.25 vCPU | Memory: 512 MB                          │    │
-│  └────────────────────────────────────────────────────────────┘    │
-│                          │                    │                     │
-│                          ▼                    ▼                     │
-│  ┌──────────────────────────────┐  ┌─────────────────────────┐    │
-│  │         AWS RDS              │  │       AWS SES           │    │
-│  │                              │  │                         │    │
-│  │  PostgreSQL 16               │  │  Email notifications    │    │
-│  │  db.t3.micro                 │  │  Contact form alerts    │    │
-│  │  20 GB storage               │  │                         │    │
-│  └──────────────────────────────┘  └─────────────────────────┘    │
-│                                                                      │
-│  ┌──────────────────────────────┐                                   │
-│  │         AWS ECR              │                                   │
-│  │                              │                                   │
-│  │  Docker image repository     │                                   │
-│  │  Auto-deploy on push         │                                   │
-│  └──────────────────────────────┘                                   │
-└─────────────────────────────────────────────────────────────────────┘
-```
+![System Architecture](src/main/resources/static/images/Architecture_1.png)
 
 ---
 
