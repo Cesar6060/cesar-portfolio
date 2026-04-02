@@ -1,491 +1,1008 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/base}">
-<head>
+<!doctype html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout/base}"
+>
+  <head>
     <title>How I Built This</title>
-</head>
-<body>
+  </head>
+  <body>
     <main layout:fragment="content">
-        <!-- Page Header -->
-        <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-16">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h1 class="font-display text-4xl md:text-5xl font-semibold mb-4">
-                        How I Built This Portfolio
-                    </h1>
-                    <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-                        A deep dive into the architecture, tech stack, and engineering decisions behind this site.
-                    </p>
-                </div>
+      <!-- Page Header -->
+      <section
+        class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-16"
+      >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h1 class="font-display text-4xl md:text-5xl font-semibold mb-4">
+              How I Built This Portfolio
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+              A deep dive into the architecture, tech stack, and engineering
+              decisions behind this site.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Content -->
+      <section class="py-16 md:py-24">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <!-- Introduction -->
+          <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Overview</h2>
+            <div class="prose prose-lg max-w-none">
+              <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                This portfolio website is built with enterprise-grade
+                technologies to demonstrate full-stack development capabilities,
+                cloud architecture knowledge, and software engineering best
+                practices.
+              </p>
+              <p class="text-gray-700 text-lg leading-relaxed">
+                Rather than using a pre-made template, I built this from scratch
+                to showcase my ability to design and implement production-ready
+                applications using industry-standard tools and frameworks.
+              </p>
             </div>
-        </section>
+          </div>
 
-        <!-- Content -->
-        <section class="py-16 md:py-24">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-
-                <!-- Introduction -->
-                <div class="mb-16">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Overview</h2>
-                    <div class="prose prose-lg max-w-none">
-                        <p class="text-gray-700 text-lg leading-relaxed mb-4">
-                            This portfolio website is built with enterprise-grade technologies to demonstrate full-stack development capabilities,
-                            cloud architecture knowledge, and software engineering best practices.
-                        </p>
-                        <p class="text-gray-700 text-lg leading-relaxed">
-                            Rather than using a pre-made template, I built this from scratch to showcase my ability to design and implement
-                            production-ready applications using industry-standard tools and frameworks.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Architecture Diagram -->
-                <div class="mb-16">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">System Architecture</h2>
-                    <div class="bg-white rounded-lg shadow-md p-4 md:p-8">
-                        <img th:src="@{/images/Architecture_1.png}"
-                             alt="System Architecture Diagram"
-                             class="w-full rounded-lg"/>
-                        <p class="text-gray-600 text-sm mt-4 text-center">
-                            Full-stack architecture deployed on AWS with CI/CD automation
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Tech Stack Section -->
-                <div class="mb-16">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Tech Stack</h2>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Backend -->
-                        <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-primary-600">
-                            <div class="flex items-center mb-4">
-                                <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-primary-100 text-primary-600 mr-4">
-                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z" />
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900">Backend</h3>
-                            </div>
-                            <ul class="space-y-2">
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>Spring Boot 3.2</strong> - Application framework</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>Java 21</strong> - Latest LTS runtime</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>Spring Data JPA</strong> - Database ORM</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>Maven</strong> - Build tool</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Frontend -->
-                        <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-600">
-                            <div class="flex items-center mb-4">
-                                <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100 text-blue-600 mr-4">
-                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900">Frontend</h3>
-                            </div>
-                            <ul class="space-y-2">
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>Thymeleaf</strong> - Server-side rendering</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>Tailwind CSS</strong> - Utility-first styling</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>Responsive Design</strong> - Mobile-first</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>SEO Optimized</strong> - Server-rendered HTML</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Database -->
-                        <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-green-600">
-                            <div class="flex items-center mb-4">
-                                <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-green-100 text-green-600 mr-4">
-                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900">Database</h3>
-                            </div>
-                            <ul class="space-y-2">
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>PostgreSQL 16</strong> - Production database</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>AWS RDS</strong> - Managed hosting</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>Flyway</strong> - Version-controlled migrations</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>H2</strong> - In-memory testing</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Cloud Infrastructure -->
-                        <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-orange-600">
-                            <div class="flex items-center mb-4">
-                                <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-orange-100 text-orange-600 mr-4">
-                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900">Cloud Infrastructure</h3>
-                            </div>
-                            <ul class="space-y-2">
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>AWS App Runner</strong> - Container hosting</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>AWS ECR</strong> - Container registry</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>AWS SES</strong> - Email notifications</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>Cloudflare</strong> - DNS, SSL, CDN</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- CI/CD & Quality -->
-                        <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-purple-600">
-                            <div class="flex items-center mb-4">
-                                <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-purple-100 text-purple-600 mr-4">
-                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900">CI/CD & Quality</h3>
-                            </div>
-                            <ul class="space-y-2">
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>GitHub Actions</strong> - Automated pipelines</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>Docker</strong> - Containerization</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>JUnit 5</strong> - Unit & integration tests</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>Greptile</strong> - AI code review</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <!-- Monitoring -->
-                        <div class="bg-white rounded-lg shadow-md p-6 border-l-4 border-pink-600">
-                            <div class="flex items-center mb-4">
-                                <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-pink-100 text-pink-600 mr-4">
-                                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-                                    </svg>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900">Monitoring</h3>
-                            </div>
-                            <ul class="space-y-2">
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>CloudWatch</strong> - Logs & metrics</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>Spring Actuator</strong> - Health endpoints</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>AWS Budgets</strong> - Cost alerts</span>
-                                </li>
-                                <li class="flex items-start">
-                                    <svg class="h-5 w-5 text-green-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <span class="text-gray-700"><strong>JaCoCo</strong> - Code coverage</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CI/CD Pipeline -->
-                <div class="mb-16">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">CI/CD Pipeline</h2>
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
-                            <div class="flex flex-col items-center text-center">
-                                <div class="w-16 h-16 bg-gray-900 rounded-lg flex items-center justify-center mb-2">
-                                    <svg class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
-                                    </svg>
-                                </div>
-                                <span class="text-sm font-semibold text-gray-900">Git Push</span>
-                            </div>
-                            <svg class="h-6 w-6 text-gray-400 hidden md:block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
-                            <div class="flex flex-col items-center text-center">
-                                <div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-2">
-                                    <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495" />
-                                    </svg>
-                                </div>
-                                <span class="text-sm font-semibold text-gray-900">GitHub Actions</span>
-                                <span class="text-xs text-gray-500">Build + Test</span>
-                            </div>
-                            <svg class="h-6 w-6 text-gray-400 hidden md:block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
-                            <div class="flex flex-col items-center text-center">
-                                <div class="w-16 h-16 bg-orange-500 rounded-lg flex items-center justify-center mb-2">
-                                    <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-                                    </svg>
-                                </div>
-                                <span class="text-sm font-semibold text-gray-900">AWS ECR</span>
-                                <span class="text-xs text-gray-500">Push Image</span>
-                            </div>
-                            <svg class="h-6 w-6 text-gray-400 hidden md:block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
-                            <div class="flex flex-col items-center text-center">
-                                <div class="w-16 h-16 bg-orange-600 rounded-lg flex items-center justify-center mb-2">
-                                    <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-                                    </svg>
-                                </div>
-                                <span class="text-sm font-semibold text-gray-900">App Runner</span>
-                                <span class="text-xs text-gray-500">Auto-deploy</span>
-                            </div>
-                            <svg class="h-6 w-6 text-gray-400 hidden md:block" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
-                            <div class="flex flex-col items-center text-center">
-                                <div class="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center mb-2">
-                                    <svg class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <span class="text-sm font-semibold text-gray-900">Live</span>
-                                <span class="text-xs text-gray-500">Zero downtime</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 text-sm mt-6 text-center">
-                            Every push to master triggers automated testing, Docker build, and zero-downtime deployment
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Key Decisions -->
-                <div class="mb-16">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Key Technical Decisions</h2>
-
-                    <div class="space-y-4">
-                        <div class="bg-white rounded-lg shadow-md p-6">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0">
-                                    <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-primary-100 text-primary-600">
-                                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-lg font-bold text-gray-900 mb-2">Why App Runner over ECS/Fargate?</h3>
-                                    <p class="text-gray-700">
-                                        App Runner provides fully managed container hosting without VPC configuration, load balancers, or auto-scaling setup.
-                                        For a single-service application, it offers the right balance of simplicity and capability while reducing operational overhead.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-lg shadow-md p-6">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0">
-                                    <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-primary-100 text-primary-600">
-                                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-lg font-bold text-gray-900 mb-2">Why Thymeleaf over React SPA?</h3>
-                                    <p class="text-gray-700">
-                                        Server-side rendering provides better SEO, faster initial page loads, and a simpler deployment model.
-                                        For a content-focused portfolio site, an SPA would add unnecessary complexity without significant benefit.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-lg shadow-md p-6">
-                            <div class="flex items-start">
-                                <div class="flex-shrink-0">
-                                    <div class="flex items-center justify-center h-10 w-10 rounded-lg bg-primary-100 text-primary-600">
-                                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="ml-4">
-                                    <h3 class="text-lg font-bold text-gray-900 mb-2">Cost Optimization</h3>
-                                    <p class="text-gray-700">
-                                        The entire infrastructure runs under $25/month by using App Runner's minimal configuration (0.25 vCPU, 512MB),
-                                        RDS db.t3.micro, Cloudflare's free tier for CDN/SSL, and AWS SES's free tier for email.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- API Endpoints -->
-                <div class="mb-16">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">API Endpoints</h2>
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <div class="divide-y divide-gray-200">
-                            <div class="p-4 hover:bg-gray-50 transition-colors duration-200">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-4">
-                                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded">GET</span>
-                                        <code class="text-gray-800 font-mono">/api/projects</code>
-                                    </div>
-                                    <a href="/api/projects"
-                                       target="_blank"
-                                       class="text-primary-600 hover:text-primary-700 font-medium">
-                                        Try it
-                                    </a>
-                                </div>
-                                <p class="text-gray-600 text-sm mt-2 ml-16">Returns all projects as JSON</p>
-                            </div>
-
-                            <div class="p-4 hover:bg-gray-50 transition-colors duration-200">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-4">
-                                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded">GET</span>
-                                        <code class="text-gray-800 font-mono">/api/projects/{slug}</code>
-                                    </div>
-                                </div>
-                                <p class="text-gray-600 text-sm mt-2 ml-16">Returns a single project by slug</p>
-                            </div>
-
-                            <div class="p-4 hover:bg-gray-50 transition-colors duration-200">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-4">
-                                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded">GET</span>
-                                        <code class="text-gray-800 font-mono">/actuator/health</code>
-                                    </div>
-                                    <a href="/actuator/health"
-                                       target="_blank"
-                                       class="text-primary-600 hover:text-primary-700 font-medium">
-                                        Try it
-                                    </a>
-                                </div>
-                                <p class="text-gray-600 text-sm mt-2 ml-16">Health check endpoint for monitoring</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- GitHub CTA -->
-                <div class="bg-gray-900 rounded-lg p-8 text-center">
-                    <h3 class="text-2xl font-bold text-white mb-4">View the Source Code</h3>
-                    <p class="text-gray-300 mb-6">
-                        All code is available on GitHub. Explore the implementation details, CI/CD workflows, and infrastructure configuration.
-                    </p>
-                    <a href="https://github.com/Cesar6060/cesar-portfolio"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-colors duration-200">
-                        <svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
-                        </svg>
-                        View on GitHub
-                    </a>
-                </div>
+          <!-- Architecture Diagram -->
+          <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">
+              System Architecture
+            </h2>
+            <div class="bg-white rounded-lg shadow-md p-4 md:p-8">
+              <img
+                th:src="@{/images/Architecture_1.png}"
+                alt="System Architecture Diagram"
+                class="w-full rounded-lg"
+              />
+              <p class="text-gray-600 text-sm mt-4 text-center">
+                Full-stack architecture deployed on AWS with CI/CD automation
+              </p>
             </div>
-        </section>
+          </div>
+
+          <!-- Tech Stack Section -->
+          <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Tech Stack</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Backend -->
+              <div
+                class="bg-white rounded-lg shadow-md p-6 border-l-4 border-primary-600"
+              >
+                <div class="flex items-center mb-4">
+                  <div
+                    class="flex items-center justify-center h-12 w-12 rounded-lg bg-primary-100 text-primary-600 mr-4"
+                  >
+                    <svg
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900">Backend</h3>
+                </div>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>Spring Boot 3.2</strong> - Application
+                      framework</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>Java 21</strong> - Latest LTS runtime</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>Spring Data JPA</strong> - Database ORM</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>Maven</strong> - Build tool</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Frontend -->
+              <div
+                class="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-600"
+              >
+                <div class="flex items-center mb-4">
+                  <div
+                    class="flex items-center justify-center h-12 w-12 rounded-lg bg-blue-100 text-blue-600 mr-4"
+                  >
+                    <svg
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900">Frontend</h3>
+                </div>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>Thymeleaf</strong> - Server-side rendering</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>Tailwind CSS</strong> - Utility-first
+                      styling</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>Responsive Design</strong> - Mobile-first</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>SEO Optimized</strong> - Server-rendered
+                      HTML</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Database -->
+              <div
+                class="bg-white rounded-lg shadow-md p-6 border-l-4 border-green-600"
+              >
+                <div class="flex items-center mb-4">
+                  <div
+                    class="flex items-center justify-center h-12 w-12 rounded-lg bg-green-100 text-green-600 mr-4"
+                  >
+                    <svg
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900">Database</h3>
+                </div>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>PostgreSQL 16</strong> - Production
+                      database</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>AWS RDS</strong> - Managed hosting</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>Flyway</strong> - Version-controlled
+                      migrations</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>H2</strong> - In-memory testing</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Cloud Infrastructure -->
+              <div
+                class="bg-white rounded-lg shadow-md p-6 border-l-4 border-orange-600"
+              >
+                <div class="flex items-center mb-4">
+                  <div
+                    class="flex items-center justify-center h-12 w-12 rounded-lg bg-orange-100 text-orange-600 mr-4"
+                  >
+                    <svg
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900">
+                    Cloud Infrastructure
+                  </h3>
+                </div>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>AWS App Runner</strong> - Container hosting</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>AWS ECR</strong> - Container registry</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>AWS SES</strong> - Email notifications</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>Cloudflare</strong> - DNS, SSL, CDN</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <!-- CI/CD & Quality -->
+              <div
+                class="bg-white rounded-lg shadow-md p-6 border-l-4 border-purple-600"
+              >
+                <div class="flex items-center mb-4">
+                  <div
+                    class="flex items-center justify-center h-12 w-12 rounded-lg bg-purple-100 text-purple-600 mr-4"
+                  >
+                    <svg
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900">
+                    CI/CD & Quality
+                  </h3>
+                </div>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>GitHub Actions</strong> - Automated
+                      pipelines</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>Docker</strong> - Containerization</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>JUnit 5</strong> - Unit & integration tests</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>Greptile</strong> - AI code review</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Monitoring -->
+              <div
+                class="bg-white rounded-lg shadow-md p-6 border-l-4 border-pink-600"
+              >
+                <div class="flex items-center mb-4">
+                  <div
+                    class="flex items-center justify-center h-12 w-12 rounded-lg bg-pink-100 text-pink-600 mr-4"
+                  >
+                    <svg
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
+                      />
+                    </svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900">Monitoring</h3>
+                </div>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>CloudWatch</strong> - Logs & metrics</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>Spring Actuator</strong> - Health endpoints</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>AWS Budgets</strong> - Cost alerts</span
+                    >
+                  </li>
+                  <li class="flex items-start">
+                    <svg
+                      class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span class="text-gray-700"
+                      ><strong>JaCoCo</strong> - Code coverage</span
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- CI/CD Pipeline -->
+          <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">
+              CI/CD Pipeline
+            </h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+              <div
+                class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4"
+              >
+                <div class="flex flex-col items-center text-center">
+                  <div
+                    class="w-16 h-16 bg-gray-900 rounded-lg flex items-center justify-center mb-2"
+                  >
+                    <svg
+                      class="h-8 w-8 text-white"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <span class="text-sm font-semibold text-gray-900"
+                    >Git Push</span
+                  >
+                </div>
+                <svg
+                  class="h-6 w-6 text-gray-400 hidden md:block"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                  />
+                </svg>
+                <div class="flex flex-col items-center text-center">
+                  <div
+                    class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mb-2"
+                  >
+                    <svg
+                      class="h-8 w-8 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495"
+                      />
+                    </svg>
+                  </div>
+                  <span class="text-sm font-semibold text-gray-900"
+                    >GitHub Actions</span
+                  >
+                  <span class="text-xs text-gray-500">Build + Test</span>
+                </div>
+                <svg
+                  class="h-6 w-6 text-gray-400 hidden md:block"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                  />
+                </svg>
+                <div class="flex flex-col items-center text-center">
+                  <div
+                    class="w-16 h-16 bg-orange-500 rounded-lg flex items-center justify-center mb-2"
+                  >
+                    <svg
+                      class="h-8 w-8 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
+                      />
+                    </svg>
+                  </div>
+                  <span class="text-sm font-semibold text-gray-900"
+                    >AWS ECR</span
+                  >
+                  <span class="text-xs text-gray-500">Push Image</span>
+                </div>
+                <svg
+                  class="h-6 w-6 text-gray-400 hidden md:block"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                  />
+                </svg>
+                <div class="flex flex-col items-center text-center">
+                  <div
+                    class="w-16 h-16 bg-orange-600 rounded-lg flex items-center justify-center mb-2"
+                  >
+                    <svg
+                      class="h-8 w-8 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+                      />
+                    </svg>
+                  </div>
+                  <span class="text-sm font-semibold text-gray-900"
+                    >App Runner</span
+                  >
+                  <span class="text-xs text-gray-500">Auto-deploy</span>
+                </div>
+                <svg
+                  class="h-6 w-6 text-gray-400 hidden md:block"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                  />
+                </svg>
+                <div class="flex flex-col items-center text-center">
+                  <div
+                    class="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center mb-2"
+                  >
+                    <svg
+                      class="h-8 w-8 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <span class="text-sm font-semibold text-gray-900">Live</span>
+                  <span class="text-xs text-gray-500">Zero downtime</span>
+                </div>
+              </div>
+              <p class="text-gray-600 text-sm mt-6 text-center">
+                Every push to master triggers automated testing, Docker build,
+                and zero-downtime deployment
+              </p>
+            </div>
+          </div>
+
+          <!-- Key Decisions -->
+          <div class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">
+              Key Technical Decisions
+            </h2>
+
+            <div class="space-y-4">
+              <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-start">
+                  <div class="flex-shrink-0">
+                    <div
+                      class="flex items-center justify-center h-10 w-10 rounded-lg bg-primary-100 text-primary-600"
+                    >
+                      <svg
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ml-4">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">
+                      Why App Runner over ECS/Fargate?
+                    </h3>
+                    <p class="text-gray-700">
+                      App Runner provides fully managed container hosting
+                      without VPC configuration, load balancers, or auto-scaling
+                      setup. For a single-service application, it offers the
+                      right balance of simplicity and capability while reducing
+                      operational overhead.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-start">
+                  <div class="flex-shrink-0">
+                    <div
+                      class="flex items-center justify-center h-10 w-10 rounded-lg bg-primary-100 text-primary-600"
+                    >
+                      <svg
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ml-4">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">
+                      Why Thymeleaf over React SPA?
+                    </h3>
+                    <p class="text-gray-700">
+                      Server-side rendering provides better SEO, faster initial
+                      page loads, and a simpler deployment model. For a
+                      content-focused portfolio site, an SPA would add
+                      unnecessary complexity without significant benefit.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="flex items-start">
+                  <div class="flex-shrink-0">
+                    <div
+                      class="flex items-center justify-center h-10 w-10 rounded-lg bg-primary-100 text-primary-600"
+                    >
+                      <svg
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ml-4">
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">
+                      Cost Optimization
+                    </h3>
+                    <p class="text-gray-700">
+                      The entire infrastructure runs under $25/month by using
+                      App Runner's minimal configuration (0.25 vCPU, 512MB), RDS
+                      db.t3.micro, Cloudflare's free tier for CDN/SSL, and AWS
+                      SES's free tier for email.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- GitHub CTA -->
+          <div class="bg-gray-900 rounded-lg p-8 text-center">
+            <h3 class="text-2xl font-bold text-white mb-4">
+              View the Source Code
+            </h3>
+            <p class="text-gray-300 mb-6">
+              All code is available on GitHub. Explore the implementation
+              details, CI/CD workflows, and infrastructure configuration.
+            </p>
+            <a
+              href="https://github.com/Cesar6060/cesar-portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-colors duration-200"
+            >
+              <svg class="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  fill-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
-</body>
+  </body>
 </html>
