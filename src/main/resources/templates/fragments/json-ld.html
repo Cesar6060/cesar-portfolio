@@ -1,0 +1,62 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <!-- JSON-LD Structured Data Fragment -->
+    <th:block th:fragment="structured-data">
+      <!-- Person Schema -->
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Cesar Villarreal",
+          "url": "https://cesarvillarreal.dev",
+          "image": "https://cesarvillarreal.dev/images/headshot.png",
+          "jobTitle": [
+            "Cloud Engineer",
+            "Technical Consultant",
+            "Software Engineer"
+          ],
+          "alumniOf": [
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "Kennesaw State University",
+              "sameAs": "https://www.kennesaw.edu/"
+            },
+            {
+              "@type": "CollegeOrUniversity",
+              "name": "University of Georgia",
+              "sameAs": "https://www.uga.edu/"
+            }
+          ],
+          "sameAs": [
+            "https://github.com/Cesar6060",
+            "https://linkedin.com/in/cesar-b-villarreal"
+          ],
+          "knowsAbout": [
+            "Cloud Computing",
+            "AWS",
+            "Spring Boot",
+            "Java",
+            "Python",
+            "Software Engineering"
+          ]
+        }
+      </script>
+
+      <!-- WebSite Schema -->
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Cesar Villarreal - Portfolio",
+          "url": "https://cesarvillarreal.dev",
+          "description": "Portfolio website showcasing cloud engineering, software development, and technical consulting work by Cesar Villarreal.",
+          "author": {
+            "@type": "Person",
+            "name": "Cesar Villarreal"
+          }
+        }
+      </script>
+    </th:block>
+  </body>
+</html>

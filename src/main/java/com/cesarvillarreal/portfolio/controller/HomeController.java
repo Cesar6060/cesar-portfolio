@@ -28,6 +28,9 @@ public class HomeController {
         this.contactService = contactService;
     }
 
+    private static final String BASE_URL = "https://cesarvillarreal.dev";
+    private static final String DEFAULT_IMAGE = BASE_URL + "/images/og-default.png";
+
     /**
      * Home page - Hero section with featured projects
      */
@@ -36,6 +39,12 @@ public class HomeController {
         log.debug("Rendering home page");
         List<Project> featuredProjects = projectService.getFeaturedProjects();
         model.addAttribute("featuredProjects", featuredProjects);
+        addSeoAttributes(model,
+            "Cesar Villarreal - Cloud Engineer & Software Developer",
+            "Portfolio of Cesar Villarreal - Cloud Engineer, Technical Consultant, and Software Engineer. Building enterprise-grade applications with Spring Boot, AWS, and modern technologies.",
+            BASE_URL,
+            DEFAULT_IMAGE,
+            "website");
         return "index";
     }
 
@@ -45,6 +54,12 @@ public class HomeController {
     @GetMapping("/about")
     public String about(Model model) {
         log.debug("Rendering about page");
+        addSeoAttributes(model,
+            "About - Cesar Villarreal",
+            "Learn about Cesar Villarreal - Cloud Engineer with AWS Solutions Architect certification, M.S. in Software Engineering, and experience building enterprise applications.",
+            BASE_URL + "/about",
+            DEFAULT_IMAGE,
+            "profile");
         return "about";
     }
 
@@ -56,6 +71,12 @@ public class HomeController {
         log.debug("Rendering projects listing page");
         List<Project> allProjects = projectService.getAllProjects();
         model.addAttribute("projects", allProjects);
+        addSeoAttributes(model,
+            "Projects - Cesar Villarreal",
+            "Browse my portfolio of projects showcasing full-stack development, cloud architecture, and system design with Spring Boot, AWS, React, and more.",
+            BASE_URL + "/projects",
+            DEFAULT_IMAGE,
+            "website");
         return "projects";
     }
 
@@ -72,7 +93,15 @@ public class HomeController {
             return "redirect:/projects";
         }
 
-        model.addAttribute("project", project.get());
+        Project p = project.get();
+        model.addAttribute("project", p);
+        String projectImage = p.getImageUrl() != null ? BASE_URL + p.getImageUrl() : DEFAULT_IMAGE;
+        addSeoAttributes(model,
+            p.getTitle() + " - Cesar Villarreal",
+            p.getShortDescription() != null ? p.getShortDescription() : "View details about " + p.getTitle(),
+            BASE_URL + "/projects/" + slug,
+            projectImage,
+            "article");
         return "project-detail";
     }
 
@@ -83,6 +112,12 @@ public class HomeController {
     public String contactForm(Model model) {
         log.debug("Rendering contact form");
         model.addAttribute("contactMessage", new ContactMessage());
+        addSeoAttributes(model,
+            "Contact - Cesar Villarreal",
+            "Get in touch with Cesar Villarreal for cloud engineering, software development, or technical consulting opportunities.",
+            BASE_URL + "/contact",
+            DEFAULT_IMAGE,
+            "website");
         return "contact";
     }
 
@@ -122,6 +157,23 @@ public class HomeController {
     @GetMapping("/how-i-built-this")
     public String howIBuiltThis(Model model) {
         log.debug("Rendering how I built this page");
+        addSeoAttributes(model,
+            "How I Built This - Cesar Villarreal",
+            "A deep dive into the architecture, tech stack, and engineering decisions behind cesarvillarreal.dev. Built with Spring Boot, AWS, and modern CI/CD practices.",
+            BASE_URL + "/how-i-built-this",
+            DEFAULT_IMAGE,
+            "article");
         return "how-i-built-this";
+    }
+
+    /**
+     * Helper method to add SEO attributes to the model
+     */
+    private void addSeoAttributes(Model model, String title, String description, String url, String image, String type) {
+        model.addAttribute("pageTitle", title);
+        model.addAttribute("pageDescription", description);
+        model.addAttribute("pageUrl", url);
+        model.addAttribute("pageImage", image);
+        model.addAttribute("pageType", type);
     }
 }

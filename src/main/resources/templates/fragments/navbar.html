@@ -1,83 +1,198 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<body>
-
-<!-- Navbar Fragment - Polished -->
-<nav th:fragment="navbar" class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
-    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+  <body>
+    <!-- Navbar Fragment - with Dark Mode -->
+    <nav
+      th:fragment="navbar"
+      class="sticky top-0 z-50 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-b border-gray-100 dark:border-gray-700 transition-colors duration-200"
+    >
+      <div class="max-w-6xl mx-auto px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
+          <!-- Logo / Name -->
+          <div class="flex-shrink-0">
+            <a href="/" class="flex items-center group">
+              <img
+                src="/images/Initials.png"
+                alt="CV"
+                class="h-20 w-auto mix-blend-multiply dark:mix-blend-screen dark:invert"
+              />
+            </a>
+          </div>
 
-            <!-- Logo / Name -->
-            <div class="flex-shrink-0">
-                <a href="/" class="flex items-center group">
-                    <img src="/images/Initials.png" alt="CV" class="h-20 w-auto">
-                </a>
-            </div>
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex md:items-center md:space-x-8">
+            <a
+              href="/"
+              class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 text-sm font-medium transition-colors duration-200"
+            >
+              Home
+            </a>
+            <a
+              href="/about"
+              class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 text-sm font-medium transition-colors duration-200"
+            >
+              About
+            </a>
+            <a
+              href="/projects"
+              class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 text-sm font-medium transition-colors duration-200"
+            >
+              Projects
+            </a>
+            <a
+              href="/how-i-built-this"
+              class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 text-sm font-medium transition-colors duration-200"
+            >
+              How I Built This
+            </a>
 
-            <!-- Desktop Navigation -->
-            <div class="hidden md:flex md:items-center md:space-x-8">
-                <a href="/"
-                   class="text-gray-600 hover:text-primary-600 text-sm font-medium transition-colors duration-200">
-                    Home
-                </a>
-                <a href="/about"
-                   class="text-gray-600 hover:text-primary-600 text-sm font-medium transition-colors duration-200">
-                    About
-                </a>
-                <a href="/projects"
-                   class="text-gray-600 hover:text-primary-600 text-sm font-medium transition-colors duration-200">
-                    Projects
-                </a>
-                <a href="/how-i-built-this"
-                   class="text-gray-600 hover:text-primary-600 text-sm font-medium transition-colors duration-200">
-                    How I Built This
-                </a>
-                <a href="/contact"
-                   class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-colors duration-200">
-                    Contact
-                </a>
-            </div>
+            <!-- Dark Mode Toggle -->
+            <button
+              id="theme-toggle"
+              type="button"
+              class="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none transition-colors duration-200"
+              aria-label="Toggle dark mode"
+            >
+              <!-- Sun icon (shown in dark mode) -->
+              <svg
+                id="sun-icon"
+                class="h-5 w-5 hidden"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                />
+              </svg>
+              <!-- Moon icon (shown in light mode) -->
+              <svg
+                id="moon-icon"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+                />
+              </svg>
+            </button>
+
+            <a
+              href="/contact"
+              class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-colors duration-200"
+            >
+              Contact
+            </a>
+          </div>
+
+          <!-- Mobile: Theme toggle + menu button -->
+          <div class="flex items-center space-x-2 md:hidden">
+            <!-- Mobile Dark Mode Toggle -->
+            <button
+              id="theme-toggle-mobile"
+              type="button"
+              class="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none transition-colors duration-200"
+              aria-label="Toggle dark mode"
+              onclick="document.getElementById('theme-toggle').click()"
+            >
+              <svg
+                class="h-5 w-5 dark:hidden"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
+                />
+              </svg>
+              <svg
+                class="h-5 w-5 hidden dark:block"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                />
+              </svg>
+            </button>
 
             <!-- Mobile menu button -->
-            <div class="md:hidden">
-                <button type="button"
-                        class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-lg text-gray-600 hover:text-primary-600 hover:bg-gray-100 focus:outline-none transition-colors duration-200"
-                        aria-expanded="false">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
-                </button>
-            </div>
+            <button
+              type="button"
+              class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none transition-colors duration-200"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Open main menu</span>
+              <svg
+                class="block h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Mobile menu -->
-    <div class="mobile-menu hidden md:hidden bg-white border-t border-gray-100">
+      <!-- Mobile menu -->
+      <div
+        class="mobile-menu hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700"
+      >
         <div class="px-4 py-3 space-y-1">
-            <a href="/"
-               class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">
-                Home
-            </a>
-            <a href="/about"
-               class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">
-                About
-            </a>
-            <a href="/projects"
-               class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">
-                Projects
-            </a>
-            <a href="/how-i-built-this"
-               class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">
-                How I Built This
-            </a>
-            <a href="/contact"
-               class="block px-4 py-3 mt-2 rounded-lg text-base font-medium text-center text-white bg-primary-600 hover:bg-primary-700">
-                Contact
-            </a>
+          <a
+            href="/"
+            class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+          >
+            Home
+          </a>
+          <a
+            href="/about"
+            class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+          >
+            About
+          </a>
+          <a
+            href="/projects"
+            class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+          >
+            Projects
+          </a>
+          <a
+            href="/how-i-built-this"
+            class="block px-4 py-3 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+          >
+            How I Built This
+          </a>
+          <a
+            href="/contact"
+            class="block px-4 py-3 mt-2 rounded-lg text-base font-medium text-center text-white bg-primary-600 hover:bg-primary-700"
+          >
+            Contact
+          </a>
         </div>
-    </div>
-</nav>
-
-</body>
+      </div>
+    </nav>
+  </body>
 </html>

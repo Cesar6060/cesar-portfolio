@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<!-- SEO Meta Tags Fragment -->
+<th:block th:fragment="meta(title, description, url, image, type)">
+    <!-- Primary Meta Tags -->
+    <meta name="description" th:content="${description}">
+    <link rel="canonical" th:href="${url}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" th:content="${type} ?: 'website'">
+    <meta property="og:url" th:content="${url}">
+    <meta property="og:title" th:content="${title}">
+    <meta property="og:description" th:content="${description}">
+    <meta property="og:image" th:content="${image}">
+    <meta property="og:site_name" content="Cesar Villarreal">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" th:content="${url}">
+    <meta name="twitter:title" th:content="${title}">
+    <meta name="twitter:description" th:content="${description}">
+    <meta name="twitter:image" th:content="${image}">
+</th:block>
+
+</head>
+</html>
