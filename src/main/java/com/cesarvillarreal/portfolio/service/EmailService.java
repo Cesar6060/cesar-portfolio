@@ -1,31 +1,34 @@
 package com.cesarvillarreal.portfolio.service;
 
 import com.cesarvillarreal.portfolio.model.ContactMessage;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.MailException;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.services.ses.SesClient;
-import software.amazon.awssdk.services.ses.model.*;
 
 @Service
 public class EmailService {
 
     private static final Logger log = LoggerFactory.getLogger(EmailService.class);
 
-    @Value("${app.email.notification-recipient:#{null}}")
-    private String notificationRecipient;
+    private final JavaMailSender mailSender;
+    private final String notificationRecipient;
+    private final boolean emailEnabled;
 
-    @Value("${app.email.enabled:false}")
-    private boolean emailEnabled;
-
-    private final SesClient sesClient;
-
-    public EmailService() {
-        this.sesClient = SesClient.builder()
-                .region(Region.US_EAST_1)
-                .build();
+    public EmailService(ObjectProvider<JavaMailSender> mailSenderProvider,
+                        @Value("${app.email.notification-recipient:#{null}}") String notificationRecipient,
+                        @Value("${app.email.enabled:false}") boolean emailEnabled) {
+        // JavaMailSender only exists as a bean when spring.mail.host is configured
+        // (prod profile) — dev and test profiles have no mail config and must still boot
+        this.mailSender = mailSenderProvider.getIfAvailable();
+        this.notificationRecipient = notificationRecipient;
+        this.emailEnabled = emailEnabled;
     }
 
     public void sendContactNotification(ContactMessage message) {
@@ -34,33 +37,24 @@ public class EmailService {
             return;
         }
 
+        if (mailSender == null) {
+            log.warn("Email notifications enabled but no mail server configured (spring.mail.host not set)");
+            return;
+        }
+
         try {
-            String subject = "New Contact Form Submission - " + message.getName();
-            String body = buildEmailBody(message);
+            MimeMessage mimeMessage = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "UTF-8");
+            helper.setFrom(notificationRecipient);
+            helper.setTo(notificationRecipient);
+            helper.setSubject("New Contact Form Submission - " + message.getName());
+            helper.setText(buildEmailBody(message), true);
 
-            SendEmailRequest request = SendEmailRequest.builder()
-                    .source(notificationRecipient)
-                    .destination(Destination.builder()
-                            .toAddresses(notificationRecipient)
-                            .build())
-                    .message(Message.builder()
-                            .subject(Content.builder()
-                                    .data(subject)
-                                    .charset("UTF-8")
-                                    .build())
-                            .body(Body.builder()
-                                    .html(Content.builder()
-                                            .data(body)
-                                            .charset("UTF-8")
-                                            .build())
-                                    .build())
-                            .build())
-                    .build();
-
-            sesClient.sendEmail(request);
+            mailSender.send(mimeMessage);
             log.info("Contact notification email sent successfully to {}", notificationRecipient);
 
-        } catch (SesException e) {
+        } catch (MailException | MessagingException e) {
+            // A mail failure must never break contact-form submission
             log.error("Failed to send contact notification email: {}", e.getMessage());
         }
     }

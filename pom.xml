@@ -117,12 +117,11 @@
         </dependency>
 
         <!-- ═══════════════════════════════════════════════════════════════ -->
-        <!-- AWS SES FOR EMAIL NOTIFICATIONS                                  -->
+        <!-- EMAIL NOTIFICATIONS (SMTP via spring-boot-starter-mail)          -->
         <!-- ═══════════════════════════════════════════════════════════════ -->
         <dependency>
-            <groupId>software.amazon.awssdk</groupId>
-            <artifactId>ses</artifactId>
-            <version>2.25.11</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
         <!-- ═══════════════════════════════════════════════════════════════ -->

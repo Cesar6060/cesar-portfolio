@@ -10,8 +10,28 @@ spring:
     enabled: true
     baseline-on-migrate: true
     clean-disabled: true
+  # Gmail SMTP for contact-form notifications. Empty-string defaults let the
+  # app boot when MAIL_* vars are unset — send failures are caught at send time.
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
-# Email notifications via AWS SES
+# Mail is non-critical (send failures are caught) — don't let an SMTP
+# outage fail /actuator/health, which Render uses for deploys/restarts
+management:
+  health:
+    mail:
+      enabled: false
+
+# Email notifications via Gmail SMTP
 app:
   email:
     enabled: true
