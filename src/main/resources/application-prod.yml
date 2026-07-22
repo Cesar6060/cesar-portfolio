@@ -24,6 +24,13 @@ spring:
           starttls:
             enable: true
 
+# Mail is non-critical (send failures are caught) — don't let an SMTP
+# outage fail /actuator/health, which Render uses for deploys/restarts
+management:
+  health:
+    mail:
+      enabled: false
+
 # Email notifications via Gmail SMTP
 app:
   email:
