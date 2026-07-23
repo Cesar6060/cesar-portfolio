@@ -45,3 +45,7 @@ jacoco.exec
 CLAUDE.md
 BUILD_PROGRESS.md
 docs/
+
+# === Claude Code (workflow config IS tracked; these local bits are not) ===
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
