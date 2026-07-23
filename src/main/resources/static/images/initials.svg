@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 80" fill="none" role="img" aria-label="CV">
-  <title>CV</title>
-  <!-- Fixed primary-500 blue: legible on both the light and dark navbar backgrounds -->
-  <path d="M51 23A24 24 0 1 0 51 57" stroke="#3b82f6" stroke-width="8" stroke-linecap="round"/>
-  <path d="M66 18L82 62L98 18" stroke="#3b82f6" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
