@@ -41,7 +41,7 @@ public class HomeController {
         model.addAttribute("featuredProjects", featuredProjects);
         addSeoAttributes(model,
             "Cesar Villarreal - Cloud Engineer & Software Developer",
-            "Portfolio of Cesar Villarreal - Cloud Engineer, Technical Consultant, and Software Engineer. Building enterprise-grade applications with Spring Boot, AWS, and modern technologies.",
+            "Portfolio of Cesar Villarreal - Cloud Engineer and Game Design, Computer Science & Robotics Teacher. Building enterprise-grade applications with Spring Boot, AWS, and modern technologies.",
             BASE_URL,
             DEFAULT_IMAGE,
             "website");
@@ -56,7 +56,7 @@ public class HomeController {
         log.debug("Rendering about page");
         addSeoAttributes(model,
             "About - Cesar Villarreal",
-            "Learn about Cesar Villarreal - Cloud Engineer with AWS Solutions Architect certification, M.S. in Software Engineering, and experience building enterprise applications.",
+            "Learn about Cesar Villarreal - Cloud Engineer and game design, computer science, and robotics teacher with an M.S. in Software Engineering and experience building enterprise applications and cloud infrastructure.",
             BASE_URL + "/about",
             DEFAULT_IMAGE,
             "profile");
@@ -114,7 +114,7 @@ public class HomeController {
         model.addAttribute("contactMessage", new ContactMessage());
         addSeoAttributes(model,
             "Contact - Cesar Villarreal",
-            "Get in touch with Cesar Villarreal for cloud engineering, software development, or technical consulting opportunities.",
+            "Get in touch with Cesar Villarreal for cloud engineering or software development opportunities.",
             BASE_URL + "/contact",
             DEFAULT_IMAGE,
             "website");
