@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  OWASP dependency-check suppressions.
+
+  Add an entry here only for a finding that has been reviewed and accepted, and
+  say why. An empty file is the correct starting state — nothing is suppressed
+  until someone has actually looked at it.
+
+  Example:
+  <suppress>
+    <notes>False positive: CVE applies to the server component, not the client we ship.</notes>
+    <packageUrl regex="true">^pkg:maven/com\.example/some-lib@.*$</packageUrl>
+    <cve>CVE-0000-00000</cve>
+  </suppress>
+-->
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/dependency-suppression.1.3.xsd">
+</suppressions>
