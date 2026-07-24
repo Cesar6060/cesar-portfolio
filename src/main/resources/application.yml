@@ -14,3 +14,22 @@ management:
 
 server:
   port: 8080
+
+  # Cloudflare and Render both terminate TLS, so requests reach Tomcat as plain HTTP.
+  # Spring Security only emits Strict-Transport-Security when request.isSecure() is true,
+  # which requires honouring X-Forwarded-Proto. Without this, HSTS is silently never sent
+  # in production and the header set looks like it "just didn't work".
+  forward-headers-strategy: framework
+
+  error:
+    # Pinned rather than relied upon: these are the Boot 3.2 defaults, but an upgrade
+    # or a stray property should not be able to start leaking internals.
+    include-stacktrace: never
+    include-message: never
+    include-binding-errors: never
+
+  tomcat:
+    # The contact form's message column is TEXT; Tomcat's implicit 2MB form limit was
+    # the only backstop on how much a single POST could push at it.
+    max-http-form-post-size: 256KB
+  max-http-request-header-size: 16KB

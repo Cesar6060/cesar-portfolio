@@ -125,13 +125,20 @@
         </dependency>
 
         <!-- ═══════════════════════════════════════════════════════════════ -->
-        <!-- PHASE 2: SECURITY (uncomment when adding admin panel)            -->
+        <!-- SECURITY                                                         -->
+        <!-- Added in Phase 13 for CSRF + security headers only. Every route  -->
+        <!-- stays permitAll — there is no authentication and no admin panel. -->
         <!-- ═══════════════════════════════════════════════════════════════ -->
-        <!--
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- Not needed for a permit-all chain; uncomment if an admin panel is ever added:
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-client</artifactId>
@@ -139,11 +146,6 @@
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity6</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
         </dependency>
         -->
     </dependencies>
