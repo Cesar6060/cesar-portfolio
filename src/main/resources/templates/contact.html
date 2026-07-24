@@ -92,10 +92,12 @@
                 method="post"
                 class="space-y-6"
               >
-                <!-- Honeypot. Positioned off-screen rather than display:none, which
-                                 bots detect and skip. aria-hidden + tabindex="-1" keep it away
-                                 from screen readers and keyboard navigation. If it arrives
-                                 filled in, the submission is silently discarded. -->
+                <!--/* Honeypot. A Thymeleaf comment, not an HTML one: this explanation is
+                       stripped during rendering, so it never ships to the client and cannot
+                       tell a bot author which field to leave alone. The field is positioned
+                       off-screen rather than hidden with display, which bots detect and skip.
+                       aria-hidden + tabindex="-1" keep it away from screen readers and keyboard
+                       navigation. Arriving filled in means the submission is silently discarded. */-->
                 <div
                   class="absolute -left-[9999px] h-px w-px overflow-hidden"
                   aria-hidden="true"
