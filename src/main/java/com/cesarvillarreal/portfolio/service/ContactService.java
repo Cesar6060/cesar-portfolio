@@ -1,5 +1,6 @@
 package com.cesarvillarreal.portfolio.service;
 
+import com.cesarvillarreal.portfolio.model.ContactForm;
 import com.cesarvillarreal.portfolio.model.ContactMessage;
 import com.cesarvillarreal.portfolio.repository.ContactMessageRepository;
 import org.slf4j.Logger;
@@ -24,11 +25,22 @@ public class ContactService {
     }
 
     /**
-     * Save a new contact message and send email notification
+     * Save a new contact message and send email notification.
+     * <p>
+     * Takes the {@link ContactForm} DTO rather than an entity and builds the entity here, so a
+     * submitted {@code id} can never reach {@code save()} and turn an insert into an update.
+     * Name and email are deliberately not logged — Render captures stdout, so logging them
+     * would put visitor PII into the host's log retention.
      */
     @Transactional
-    public ContactMessage saveMessage(ContactMessage message) {
-        log.info("Saving contact message from: {} ({})", message.getName(), message.getEmail());
+    public ContactMessage saveMessage(ContactForm form) {
+        log.info("Saving contact message");
+
+        ContactMessage message = new ContactMessage();
+        message.setName(form.name());
+        message.setEmail(form.email());
+        message.setMessage(form.message());
+
         ContactMessage saved = contactMessageRepository.save(message);
 
         // Send email notification asynchronously

@@ -27,8 +27,10 @@ public class ContactMessage {
     @Column(nullable = false)
     private String email;
 
+    // max is defence in depth: the column is TEXT, and ContactForm already bounds the
+    // submitted value. This stops anything else in the app writing an unbounded message.
     @NotBlank(message = "Message is required")
-    @Size(min = 10, message = "Message must be at least 10 characters")
+    @Size(min = 10, max = 5000, message = "Message must be between 10 and 5000 characters")
     @Column(nullable = false, columnDefinition = "TEXT")
     private String message;
 
