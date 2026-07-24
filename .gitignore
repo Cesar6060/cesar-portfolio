@@ -49,3 +49,7 @@ docs/
 # === Claude Code (workflow config IS tracked; these local bits are not) ===
 .claude/settings.local.json
 .claude/scheduled_tasks.lock
+
+# === Local-only config (holds credentials — must never be committed) ===
+.mcp.json
+CLAUDE.local.md
