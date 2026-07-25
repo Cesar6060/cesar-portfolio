@@ -380,6 +380,30 @@ class HomeControllerTest {
         verify(contactService, never()).saveMessage(any(ContactForm.class));
     }
 
+    /**
+     * B4 / F7, HTML branch. The /api/** branch is covered in ApiControllerTest; this is the
+     * other half. submitContact catches its own exceptions, so the only way to reach the
+     * ModelAndView branch is a service throwing from a plain GET route.
+     */
+    @Test
+    void htmlRoute_WhenServiceThrows_ShouldRenderErrorViewWithoutLeakingDetail() throws Exception {
+        when(projectService.getAllProjects())
+                .thenThrow(new IllegalStateException("neon-db-prod unreachable at 10.0.0.4:5432"));
+
+        String body = mockMvc.perform(get("/projects"))
+                .andExpect(status().isInternalServerError())
+                .andExpect(view().name("error"))
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+
+        assertThat(body)
+                .doesNotContain("IllegalStateException")
+                .doesNotContain("neon-db-prod")
+                .doesNotContain("10.0.0.4")
+                .doesNotContain("com.cesarvillarreal");
+    }
+
     /** V6 / F4 — the security headers the live site had none of. */
     @Test
     void get_ShouldEmitSecurityHeaders() throws Exception {
