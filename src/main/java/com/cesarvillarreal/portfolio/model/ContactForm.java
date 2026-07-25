@@ -47,6 +47,10 @@ public record ContactForm(
      * it was detected just teaches it which field to skip.
      */
     public boolean isLikelyBot() {
-        return website != null && !website.isBlank();
+        // isEmpty(), deliberately not isBlank(): a browser submits "" for a field nobody
+        // touched, so any non-empty value at all — including a single space — means something
+        // filled it in. isBlank() would wave through a bot that pads every field with
+        // whitespace, which is exactly the kind of bot this is meant to catch.
+        return website != null && !website.isEmpty();
     }
 }

@@ -297,6 +297,44 @@ class HomeControllerTest {
         verify(contactService, never()).saveMessage(any(ContactForm.class));
     }
 
+    /**
+     * Regression for an adversarial-review finding: the honeypot originally used isBlank(),
+     * so a bot padding every field with a space slipped straight through. A browser submits
+     * "" for an untouched field, so whitespace can only have been put there deliberately.
+     */
+    @Test
+    void submitContact_WithWhitespaceOnlyHoneypot_ShouldStillBeDiscarded() throws Exception {
+        for (String filler : new String[]{" ", "\t", "\n", "   "}) {
+            mockMvc.perform(post("/contact")
+                            .with(csrf())
+                            .param("name", "Spam Bot")
+                            .param("email", "bot@example.com")
+                            .param("message", "Buy cheap widgets right now")
+                            .param("website", filler))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(redirectedUrl("/contact"));
+        }
+
+        verify(contactService, never()).saveMessage(any(ContactForm.class));
+    }
+
+    /** The other side of it: an untouched honeypot must not block a real submission. */
+    @Test
+    void submitContact_WithEmptyHoneypot_ShouldSaveNormally() throws Exception {
+        when(contactService.saveMessage(any(ContactForm.class))).thenReturn(new ContactMessage());
+
+        mockMvc.perform(post("/contact")
+                        .with(csrf())
+                        .param("name", "Real Person")
+                        .param("email", "real@example.com")
+                        .param("message", "A genuine enquiry about your work.")
+                        .param("website", ""))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(flash().attributeExists("success"));
+
+        verify(contactService, times(1)).saveMessage(any(ContactForm.class));
+    }
+
     /** V4 / F6 — 5001 characters against a TEXT column. */
     @Test
     void submitContact_WithOversizedMessage_ShouldReturnValidationError() throws Exception {
