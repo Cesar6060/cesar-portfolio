@@ -1,0 +1,32 @@
+# Keep the build context minimal. The Dockerfile copies only pom.xml and src/,
+# but everything below otherwise crosses the daemon boundary on every build —
+# including full git history and any *.env credential file.
+
+.git
+.gitignore
+.github
+target
+build
+
+# Credentials and local-only config
+*.env
+.mcp.json
+CLAUDE.local.md
+
+# Tooling / IDE
+.claude
+.idea
+.vscode
+*.iml
+.mvn/timing.properties
+
+# Docs and notes (not needed to build)
+docs
+*.md
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Local infra
+docker-compose.yml

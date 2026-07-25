@@ -1,6 +1,6 @@
 package com.cesarvillarreal.portfolio.controller;
 
-import com.cesarvillarreal.portfolio.model.ContactMessage;
+import com.cesarvillarreal.portfolio.model.ContactForm;
 import com.cesarvillarreal.portfolio.model.Project;
 import com.cesarvillarreal.portfolio.service.ContactService;
 import com.cesarvillarreal.portfolio.service.ProjectService;
@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -30,6 +31,10 @@ public class HomeController {
 
     private static final String BASE_URL = "https://cesarvillarreal.dev";
     private static final String DEFAULT_IMAGE = BASE_URL + "/images/og-default.png";
+
+    // Shown for both a genuine save and a honeypot rejection — the two must be indistinguishable.
+    private static final String CONTACT_SUCCESS_MESSAGE =
+            "Thank you for your message! I'll get back to you soon.";
 
     /**
      * Home page - Hero section with featured projects
@@ -111,13 +116,8 @@ public class HomeController {
     @GetMapping("/contact")
     public String contactForm(Model model) {
         log.debug("Rendering contact form");
-        model.addAttribute("contactMessage", new ContactMessage());
-        addSeoAttributes(model,
-            "Contact - Cesar Villarreal",
-            "Get in touch with Cesar Villarreal for cloud engineering or software development opportunities.",
-            BASE_URL + "/contact",
-            DEFAULT_IMAGE,
-            "website");
+        model.addAttribute("contactForm", ContactForm.empty());
+        addContactSeoAttributes(model);
         return "contact";
     }
 
@@ -126,23 +126,35 @@ public class HomeController {
      */
     @PostMapping("/contact")
     public String submitContact(
-            @Valid @ModelAttribute("contactMessage") ContactMessage contactMessage,
+            @Valid @ModelAttribute("contactForm") ContactForm contactForm,
             BindingResult bindingResult,
             RedirectAttributes redirectAttributes,
             Model model) {
 
-        log.info("Contact form submission received - Name: {}, Email: {}",
-                contactMessage.getName(), contactMessage.getEmail());
+        // Nothing identifying goes in the logs: Render captures stdout, so a name or an
+        // email address here would land in the host's log retention.
+        log.info("Contact form submission received");
 
         if (bindingResult.hasErrors()) {
-            log.warn("Contact form validation failed. Errors: {}", bindingResult.getAllErrors());
+            log.warn("Contact form validation failed with {} error(s) on fields: {}",
+                    bindingResult.getErrorCount(),
+                    bindingResult.getFieldErrors().stream().map(FieldError::getField).toList());
+            addContactSeoAttributes(model);
             return "contact";
         }
 
+        // Honeypot. Report success without saving or emailing — a bot that is told it was
+        // caught simply learns which field to leave alone next time.
+        if (contactForm.isLikelyBot()) {
+            log.debug("Contact submission discarded by honeypot");
+            redirectAttributes.addFlashAttribute("success", CONTACT_SUCCESS_MESSAGE);
+            return "redirect:/contact";
+        }
+
         try {
-            contactService.saveMessage(contactMessage);
-            log.info("Contact message saved successfully from: {}", contactMessage.getEmail());
-            redirectAttributes.addFlashAttribute("success", "Thank you for your message! I'll get back to you soon.");
+            contactService.saveMessage(contactForm);
+            log.info("Contact message saved successfully");
+            redirectAttributes.addFlashAttribute("success", CONTACT_SUCCESS_MESSAGE);
             return "redirect:/contact";
         } catch (Exception e) {
             log.error("Error saving contact message", e);
@@ -164,6 +176,19 @@ public class HomeController {
             DEFAULT_IMAGE,
             "article");
         return "how-i-built-this";
+    }
+
+    /**
+     * Shared by the contact GET handler and the validation-error redisplay path, so a form
+     * that comes back with errors keeps its page title and meta tags.
+     */
+    private void addContactSeoAttributes(Model model) {
+        addSeoAttributes(model,
+            "Contact - Cesar Villarreal",
+            "Get in touch with Cesar Villarreal for cloud engineering or software development opportunities.",
+            BASE_URL + "/contact",
+            DEFAULT_IMAGE,
+            "website");
     }
 
     /**
